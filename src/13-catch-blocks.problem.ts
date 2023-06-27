@@ -5,8 +5,21 @@ const tryCatchDemo = (state: "fail" | "succeed") => {
     if (state === "fail") {
       throw new Error("Failure!");
     }
-  } catch (e) {
+  } 
+  // solution 1
+  /* catch (e: any) {
     return e.message;
+  } */
+  // solution 2
+  /* catch (e) {
+    return (e as Error).message;
+  } */
+  // solution 3 (best)
+  catch (e) {
+    if (e instanceof Error) {
+      return e.message;
+    }
+    return String(e);
   }
 };
 

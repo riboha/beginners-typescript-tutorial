@@ -3,8 +3,10 @@ interface User {
   firstName: string;
   lastName: string;
   role: "admin" | "user" | "super-admin";
-  posts: Post;
+  //posts: Post[];
+  posts: Array<Post>; // Generic type
 }
+
 
 interface Post {
   id: number;

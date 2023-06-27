@@ -1,10 +1,36 @@
 import { expect, it } from "vitest";
 
-export const addTwoNumbers = (params) => {
+
+
+// solution 1 (type)
+type Param = {
+  first: number;
+  second: number;
+};
+export const addTwoNumbers = (params: Param) => {
   return params.first + params.second;
 };
 
-it("Should add the two numbers together", () => {
+// solution 2
+export const addTwoNumbers2 = (params: { first: number, second: number }) => {
+  return params.first + params.second;
+};
+
+// solution 3 (interface)
+interface Base {
+  first: number;
+  second: number;
+};
+export const addTwoNumbers3 = (params: Base) => {
+  return params.first + params.second;
+};
+
+// bonus: not recommendable way 1 (deconstructed parameters on the left side)
+export const addTwoNumbers4 = ({ first, second }: { first: number, second: number }) => {
+  return first + second;
+};
+
+it ("Should add the two  numbers together", () => {
   expect(
     addTwoNumbers({
       first: 2,
@@ -19,3 +45,4 @@ it("Should add the two numbers together", () => {
     }),
   ).toEqual(30);
 });
+

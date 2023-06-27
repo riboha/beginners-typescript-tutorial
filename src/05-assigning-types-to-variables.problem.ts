@@ -4,14 +4,27 @@ interface User {
   id: number;
   firstName: string;
   lastName: string;
-  isAdmin: boolean;
+  isAdmin?: boolean;
 }
 
 /**
  * How do we ensure that defaultUser is of type User
  * at THIS LINE - not further down in the code?
  */
-const defaultUser = {};
+let defaultUser: User;
+defaultUser = {
+  id: 1,
+  firstName: 'Matt',
+  lastName: 'Pocock',
+  //isAdmin: true,
+  //isAdmain: true
+};
+
+let defaultUser1: User;
+
+const defaultUser2 = {
+  id: 123,
+} as User; // type casting
 
 const getUserId = (user: User) => {
   return user.id;
@@ -19,4 +32,5 @@ const getUserId = (user: User) => {
 
 it("Should get the user id", () => {
   expect(getUserId(defaultUser)).toEqual(1);
+  expect(getUserId(defaultUser1)).toEqual(1);
 });
